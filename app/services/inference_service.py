@@ -12,28 +12,19 @@ from app.api.schemas.inference import (
 )
 
 from app.models.base import BaseModel
-from app.models.mock_model import MockModel
+# from app.models.mock_model import MockModel
+from app.core.registry import registry
 
 
 class InferenceService:
-    """
-    Service responsible for running AI inference.
-    """
-
-    def __init__(
-        self,
-        model: BaseModel | None = None,
-    ) -> None:
-
-        # Default model
-        self.model = model or MockModel()
 
     def predict(
         self,
         request: InferenceRequest,
     ) -> InferenceResponse:
-        """
-        Execute model inference.
-        """
 
-        return self.model.predict(request)
+        model = registry.get(
+            request.model_name
+        )
+
+        return model.predict(request)
