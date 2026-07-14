@@ -1,0 +1,58 @@
+[build-system]
+requires = ["setuptools>=69.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "medical-ai-serving-platform"
+version = "0.1.0"
+description = "Production-ready Medical AI Serving Platform for Vision-Language Models"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+
+authors = [
+    { name = "Mohammad Hamghalam", email = "m.hamghalam@gmail.com" }
+]
+
+dependencies = [
+    "fastapi>=0.116.0",
+    "uvicorn[standard]>=0.35.0",
+    "pydantic>=2.11.0",
+    "pydantic-settings>=2.10.0",
+]
+
+[project.optional-dependencies]
+
+dev = [
+    "pytest",
+    "pytest-asyncio",
+    "httpx",
+
+    "black",
+    "ruff",
+    "mypy",
+
+    "pre-commit",
+]
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+include = ["app*"]
+
+[tool.black]
+line-length = 88
+
+[tool.ruff]
+line-length = 88
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = [
+    "tests"
+]
+
+[tool.mypy]
+python_version = "3.12"
+ignore_missing_imports = true
