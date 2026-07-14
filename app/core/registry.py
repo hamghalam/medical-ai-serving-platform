@@ -28,11 +28,11 @@ class ModelRegistry:
         )
         
         self.register(
-    "medgemma",
-    MedGemmaModel(
-        model_name=settings.MEDGEMMA_MODEL_NAME,
-    ),
-)
+            "medgemma",
+            MedGemmaModel(
+                model_name=settings.MEDGEMMA_MODEL_NAME,
+            ),
+        )
 
     def register(
         self,
