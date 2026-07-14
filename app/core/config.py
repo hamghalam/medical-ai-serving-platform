@@ -18,6 +18,8 @@ class Settings(BaseSettings):
     PORT: int = 8000
 
     DEBUG: bool = True
+    
+    MEDGEMMA_MODEL_NAME: str = "google/medgemma-4b-it"
 
     model_config = SettingsConfigDict(
         env_file=".env",

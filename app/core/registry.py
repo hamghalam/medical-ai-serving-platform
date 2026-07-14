@@ -10,6 +10,8 @@ from typing import Dict
 from app.models.base import BaseModel
 from app.models.mock_model import MockModel
 
+from app.core.config import settings
+from app.models.medgemma_model import MedGemmaModel
 
 class ModelRegistry:
     """
@@ -24,6 +26,13 @@ class ModelRegistry:
             "mock-medgemma",
             MockModel(),
         )
+        
+        self.register(
+    "medgemma",
+    MedGemmaModel(
+        model_name=settings.MEDGEMMA_MODEL_NAME,
+    ),
+)
 
     def register(
         self,
